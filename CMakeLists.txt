@@ -5,6 +5,8 @@ project(aesd-assignments)
 # Students can also add paths to their own test files using a ../ prefix to
 # reference this working directory
 
+SET(CMAKE_SYSTEM_PROCESSOR aarch64)
+
 set(CMAKE_C_FLAGS "-pthread")
 
 set(AUTOTEST_SOURCES
