@@ -5,6 +5,8 @@ project(aesd-assignments)
 # Students can also add paths to their own test files using a ../ prefix to
 # reference this working directory
 
+SET(CMAKE_C_COMPIULER /home/auspauld/ARM/arm-gnu-toolchain-13.3.rel1-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-gcc)
+
 set(CMAKE_C_FLAGS "-pthread")
 
 set(AUTOTEST_SOURCES
