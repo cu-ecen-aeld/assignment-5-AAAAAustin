@@ -15,18 +15,27 @@ AESD_ASSIGNMENTS_SITE_METHOD = git
 AESD_ASSIGNMENTS_GIT_SUBMODULES = YES
 
 define AESD_ASSIGNMENTS_BUILD_CMDS
+	# assignment 4
 	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/finder-app all
+	# assignment 5
+	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/server all
 endef
 
 # TODO add your writer, finder and finder-test utilities/scripts to the installation steps below
+# PERSONAL NOTE: -d on line 24, confusion?  Why is there -d instead of -m, ask TA perhaps
 define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
-	$(INSTALL) -d 0755 $(@D)/conf/ $(TARGET_DIR)/etc/finder-app/conf/
+	# assignment 4
+	$(INSTALL) -d 0755 $(@D)/conf/ $(TARGET_DIR)/etc/finder-app/conf/     
 	$(INSTALL) -m 0755 $(@D)/conf/* $(TARGET_DIR)/etc/finder-app/conf/
 	$(INSTALL) -m 0755 $(@D)/assignment-autotest/test/assignment4/* $(TARGET_DIR)/bin
 
 	$(INSTALL) -m 0755 $(@D)/finder-app/finder-test.sh* $(TARGET_DIR)/usr/bin
 	$(INSTALL) -m 0755 $(@D)/finder-app/writer* $(TARGET_DIR)/usr/bin
 	$(INSTALL) -m 0755 $(@D)/finder-app/finder.sh* $(TARGET_DIR)/usr/bin
+
+	# assignment 5
+	$(INSTALL) -m 0755 $(@D)/server/aesdsocket $(TARGET_DIR)/usr/bin
+	$(INSTALL) -m 0755 $(@D)/server/aesdsocket-start-stop.sh $(TARGET_DIR)/etc/init.d/S99aesdsocket
 endef
 
 $(eval $(generic-package))
